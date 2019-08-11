@@ -112,6 +112,10 @@
               "devServerTarget": "auto-mtg:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
