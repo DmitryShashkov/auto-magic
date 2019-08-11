@@ -27,7 +27,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng deploy --base-href=/auto-magic/"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.802.1",
