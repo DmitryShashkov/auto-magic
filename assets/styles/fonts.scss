@@ -1,0 +1,34 @@
+// https://www.reddit.com/r/magicTCG/comments/4ocfo5/what_fonts_do_magic_cards_use_and_which_free/
+// http://msetemps.sourceforge.net/phpBB3/viewtopic.php?t=144
+// https://www.urbanfonts.com/fonts/Magic:_the_Gathering.font
+
+@font-face {
+    font-family: 'Matrix';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/assets/fonts/matrix-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Matrix';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/assets/fonts/matrix-bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Beleren';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/assets/fonts/beleren-bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'MagicMedieval';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/assets/fonts/magic-medieval.ttf") format("truetype");
+}
