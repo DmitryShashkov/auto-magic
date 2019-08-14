@@ -7,14 +7,14 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/assets/fonts/matrix-regular.ttf") format("truetype");
+    src: url("../../assets/fonts/matrix-regular.ttf") format("truetype");
 }
 @font-face {
     font-family: 'Matrix';
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url("/assets/fonts/matrix-bold.ttf") format("truetype");
+    src: url("../../assets/fonts/matrix-bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -22,7 +22,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url("/assets/fonts/beleren-bold.ttf") format("truetype");
+    src: url("../../assets/fonts/beleren-bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -30,5 +30,5 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/assets/fonts/magic-medieval.ttf") format("truetype");
+    src: url("../../assets/fonts/magic-medieval.ttf") format("truetype");
 }
