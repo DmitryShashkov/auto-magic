@@ -1,5 +1,9 @@
 @import "./assets/styles/colors";
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: $color-mine-shaft-approx;
     color: $color-periwinkle;
