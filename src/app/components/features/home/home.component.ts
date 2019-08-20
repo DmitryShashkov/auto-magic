@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { GOOGLE_CLIENT_ID, SELF_URL } from '../../../../environments/environment';
 import { RoutingContract } from '../../../core/contracts/routing.contract';
+import { CardsService } from '../../../services/cards.service';
 
 @Component({
     selector: 'am-home',
@@ -9,10 +10,15 @@ import { RoutingContract } from '../../../core/contracts/routing.contract';
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
     constructor (
         @Inject(DOCUMENT) private readonly document: Document,
+        private readonly cardsService: CardsService,
     ) { }
+
+    public ngOnInit (): void {
+        this.cardsService.getRandom().subscribe(console.log);
+    }
     
     public signIn (): void {
         const redirectUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
