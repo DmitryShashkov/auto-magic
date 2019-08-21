@@ -3,6 +3,9 @@ import { DOCUMENT } from '@angular/common';
 import { GOOGLE_CLIENT_ID, SELF_URL } from '../../../../environments/environment';
 import { RoutingContract } from '../../../core/contracts/routing.contract';
 import { CardsService } from '../../../services/cards.service';
+import { Observable } from 'rxjs';
+import { CardModel } from '../../../models/card.model';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'am-home',
@@ -11,13 +14,20 @@ import { CardsService } from '../../../services/cards.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+    public randomCard: Observable<CardModel>;
+
     constructor (
         @Inject(DOCUMENT) private readonly document: Document,
         private readonly cardsService: CardsService,
     ) { }
 
     public ngOnInit (): void {
-        this.cardsService.getRandom().subscribe(console.log);
+        this.randomCard = this.cardsService.getRandom().pipe(
+            map((card: CardModel) => {
+                card.text = `Click ${card.name}: enter the game.`;
+                return card;
+            }),
+        );
     }
     
     public signIn (): void {
