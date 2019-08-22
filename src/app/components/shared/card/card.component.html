@@ -1,5 +1,12 @@
 <div class="card">
-    <div class="card__background">
+    <div class="card__background"
+        [class.colorless]="card?.isColorless"
+        [class.white]="card?.isWhite"
+        [class.blue]="card?.isBlue"
+        [class.black]="card?.isBlack"
+        [class.red]="card?.isRed"
+        [class.green]="card?.isGreen"
+        [class.multi-colored]="card?.isMultiColored">
         <article class="article">
             <div class="card__body"></div>
 

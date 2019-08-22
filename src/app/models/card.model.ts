@@ -34,4 +34,26 @@ export class CardModel {
 
     @Type(() => ArtistModel)
     @Expose() public artist: ArtistModel;
+
+    public get isColorless (): boolean {
+        return !this.colors.length;
+    }
+    public get isWhite (): boolean {
+        return this.colors.includes('W');
+    }
+    public get isBlue (): boolean {
+        return this.colors.includes('U');
+    }
+    public get isBlack (): boolean {
+        return this.colors.includes('B');
+    }
+    public get isRed (): boolean {
+        return this.colors.includes('R');
+    }
+    public get isGreen (): boolean {
+        return this.colors.includes('G');
+    }
+    public get isMultiColored (): boolean {
+        return this.colors.length > 1;
+    }
 }
