@@ -1,12 +1,17 @@
 <div class="card">
-    <div class="card__background"
-        [class.colorless]="card?.isColorless"
-        [class.white]="card?.isWhite"
-        [class.blue]="card?.isBlue"
-        [class.black]="card?.isBlack"
-        [class.red]="card?.isRed"
-        [class.green]="card?.isGreen"
-        [class.multi-colored]="card?.isMultiColored">
+    <div class="card__texture-layer"></div>
+
+    <div class="card__color-layer"
+        [class.mana-colorless]="card?.isColorless"
+        [class.mana-white]="card?.isWhite"
+        [class.mana-blue]="card?.isBlue"
+        [class.mana-black]="card?.isBlack"
+        [class.mana-red]="card?.isRed"
+        [class.mana-green]="card?.isGreen"
+        [class.mana-multi-colored]="card?.isMultiColored">
+    </div>
+
+    <div class="card__background">
         <article class="article">
             <div class="card__body"></div>
 

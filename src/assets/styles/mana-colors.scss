@@ -1,0 +1,80 @@
+// color values
+$mana-colorless: #6699aa;
+$mana-white: #d4dbcd;
+$mana-blue: #002269;
+$mana-black: #0e0e0e;
+$mana-red: #8d0c0c;
+$mana-green: #003504;
+$mana-multi-colored: #ab8545;
+
+// mono colors
+.mana-colorless {
+    background-color: $mana-colorless;
+}
+.mana-white {
+    background-color: $mana-white;
+}
+.mana-blue {
+    background-color: $mana-blue;
+}
+.mana-black {
+    background-color: $mana-black;
+}
+.mana-red {
+    background-color: $mana-red;
+}
+.mana-green {
+    background-color: $mana-green;
+}
+
+// dual colors
+.mana-white.mana-blue {
+    // Azorius
+    background-image: linear-gradient(90deg, $mana-blue, $mana-white);
+}
+.mana-white.mana-black {
+    // Orzhov
+    background-image: linear-gradient(90deg, $mana-white, $mana-black);
+}
+.mana-white.mana-red {
+    // Boros
+    background-image: linear-gradient(90deg, $mana-red, $mana-white);
+}
+.mana-white.mana-green {
+    // Selesnya
+    background-image: linear-gradient(90deg, $mana-green, $mana-white);
+}
+.mana-blue.mana-black {
+    // Dimir
+    background-image: linear-gradient(90deg, $mana-blue, $mana-black);
+}
+.mana-blue.mana-red {
+    // Izzet
+    background-image: linear-gradient(90deg, $mana-blue, $mana-red);
+}
+.mana-blue.mana-green {
+    // Simic
+    background-image: linear-gradient(90deg, $mana-green, $mana-blue);
+}
+.mana-black.mana-red {
+    // Rakdos
+    background-image: linear-gradient(90deg, $mana-black, $mana-red);
+}
+.mana-black.mana-green {
+    // Golgari
+    background-image: linear-gradient(90deg, $mana-black, $mana-green);
+}
+.mana-red.mana-green {
+    // Gruul
+    background-image: linear-gradient(90deg, $mana-red, $mana-green);
+}
+
+// three or more colors
+.mana-multi-colored {
+    background-color: $mana-multi-colored !important;
+}
+
+
+
+    
+    // opacity: 0.7;

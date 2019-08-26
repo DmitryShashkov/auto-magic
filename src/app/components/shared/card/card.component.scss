@@ -10,19 +10,27 @@
 	border-radius: 5px; 
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
     overflow: hidden;
+    position: relative;
     
+    &__texture-layer, &__color-layer {
+        border-radius: 10px 10px 40px 40px;
+        height: 475px;
+        width: 366px;
+        position: absolute;
+        top: 17px;
+        left: 17px;
+    }
+
+    &__texture-layer {
+        background-image: url("../../../../assets/images/card-bg-texture.jpg");
+    }
+
+    &__color-layer {
+        opacity: 0.7;
+    }
+
     &__background {
         padding: 7px 8px 30px 7px;
-        // background-image: 
-        //     linear-gradient(90deg, #8d0c0c, #002269),
-        //     repeating-linear-gradient(140deg, transparent, rgba(255, 255, 255, 0.25) 1%, transparent 20%),
-        //     repeating-linear-gradient(-30deg, transparent, transparent 8%, rgba(255, 255, 255, 0.4), transparent 9%),
-        //     repeating-linear-gradient(-10deg, transparent, transparent 13%, rgba(0, 0, 0, 0.4), transparent 15%),
-        //     repeating-linear-gradient(80deg, transparent, transparent 7.5%, rgba(0, 0, 0, 0.25), transparent 8%),
-        //     repeating-linear-gradient(5deg, transparent, transparent 10.5%, rgba(255, 255, 255, 0.5), transparent 11%),
-        //     repeating-linear-gradient(75deg, transparent, transparent 11.5%, rgba(255, 255, 255, 0.5), transparent 12%),
-        //     repeating-radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 1%, transparent 1%, transparent 5%);
-        border-radius: 10px 10px 40px 40px;
         height: 475px;
     }
 
@@ -169,24 +177,4 @@ footer {
     font-family: 'Matrix';
 }
 
-.colorless {
-    background-color: #69a;
-}
-.white {
-    background-color: #d4dbcd;
-}
-.blue {
-    background-color: #002269;
-}
-.black {
-    background-color: #121415;
-}
-.red {
-    background-color: #8d0c0c;
-}
-.green {
-    background-color: #003504;
-}
-.multi-colored {
-
-}
+//     opacity: 0.7;
