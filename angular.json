@@ -25,6 +25,7 @@
             "styles": [
               "src/assets/styles/reset.scss",
               "src/assets/styles/fonts.scss",
+              "src/assets/styles/animations.scss",
               "src/styles.scss"
             ],
             "scripts": []
