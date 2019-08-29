@@ -63,22 +63,28 @@ export class ProgressiveImageDirective implements OnChanges, AfterViewInit {
     }
 
     private injectImage (): void {
-        if (ProgressiveImageDirective.isNativeLazyLoadingSupported) {
-            const imageLayer: HTMLImageElement = this.document.createElement('img');
-            const imageLoadingAttr: Attr = this.document.createAttribute('loading');
+        const imageLayer: HTMLImageElement = this.document.createElement('img');
 
+        if (ProgressiveImageDirective.isNativeLazyLoadingSupported) {
+            const imageLoadingAttr: Attr = this.document.createAttribute('loading');
             imageLoadingAttr.value = 'lazy';
 
             imageLayer.src = this.source;
             imageLayer.attributes.setNamedItem(imageLoadingAttr);
+        } else {
+            const dataSrcAttribute: Attr = this.document.createAttribute('data-src');
+            dataSrcAttribute.value = this.source;
 
-            imageLayer.style.width = '100%';
-            imageLayer.style.height = '100%';
-            imageLayer.style.objectFit = 'cover';
-            imageLayer.style.objectPosition = 'center';
-            imageLayer.style.position = 'relative';
-
-            this.element.appendChild(imageLayer);
+            imageLayer.attributes.setNamedItem(dataSrcAttribute);
+            imageLayer.classList.add('lazyload');
         }
+
+        imageLayer.style.width = '100%';
+        imageLayer.style.height = '100%';
+        imageLayer.style.objectFit = 'cover';
+        imageLayer.style.objectPosition = 'center';
+        imageLayer.style.position = 'relative';
+
+        this.element.appendChild(imageLayer);
     }
 }
