@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.router';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderModule } from './components/shared/loader/loader.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpClientModule,
+        LoaderModule,
         RouterModule.forRoot(APP_ROUTES)
     ],
     declarations: [
@@ -19,10 +21,3 @@ import { HttpClientModule } from '@angular/common/http';
     ],
 })
 export class AppModule { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

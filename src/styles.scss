@@ -8,3 +8,12 @@ body {
     background-color: $color-mine-shaft-approx;
     color: $color-periwinkle;
 }
+
+#page-wrapper {
+    min-height: 100vh;
+    overflow-y: scroll;
+    
+    &.blurred {
+        filter: blur(5px);
+    }
+}
