@@ -1,4 +1,4 @@
-import { ComponentRef, Inject, Injectable, OnDestroy } from '@angular/core';
+import { ComponentRef, Inject, Injectable, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { InjectionService } from './injection.service';
 import { map, share } from 'rxjs/operators';
@@ -15,8 +15,12 @@ export class LoaderService implements OnDestroy {
     private readonly loader: ComponentRef<LoaderComponent>;
     public readonly isLoaderShown: Observable<boolean>;
 
+    private readonly pageWrapper: HTMLElement;
+    private readonly renderer: Renderer2;
+
     constructor (
         private readonly injectionService: InjectionService,
+        private readonly rendererFactory: RendererFactory2,
         @Inject(DOCUMENT) private readonly document: Document,
     ) {
         this.isLoaderShown = this.loadingProcesses.pipe(
@@ -37,14 +41,25 @@ export class LoaderService implements OnDestroy {
 
         this.injectionService.setRootViewContainer(this.document.getElementById('loader-container'));
         this.loader = this.injectionService.appendComponent(LoaderComponent);
+
+        this.pageWrapper = this.document.getElementById('page-wrapper');
+        this.renderer = this.rendererFactory.createRenderer(null, null);
     }
 
     public start (): void {
+        if (this.loadingProcesses.value === 0) {
+            this.renderer.addClass(this.pageWrapper, 'blurred');
+        }
+
         this.loadingProcesses.next(this.loadingProcesses.value + 1);
     }
 
     public stop (): void {
         this.loadingProcesses.next(this.loadingProcesses.value - 1);
+
+        if (this.loadingProcesses.value === 0) {
+            this.renderer.removeClass(this.pageWrapper, 'blurred');
+        }
     }
 
     public ngOnDestroy (): void {
