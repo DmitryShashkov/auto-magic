@@ -1,0 +1,13 @@
+@mixin single-line-ellipsis () {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin multi-line-ellipsis ($lineClamp) {
+    /* autoprefixer: off */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lineClamp;
+    -webkit-box-orient: vertical;
+}
