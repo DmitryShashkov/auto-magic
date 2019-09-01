@@ -10,3 +10,6 @@ import { CardModel } from "../../../models/card.model";
 export class CardComponent {
     @Input() public card: CardModel;
 }
+
+// todo: remove ?1562857017 from art crop link in DB, add it manually instead
+// todo: show game hints instead of flavor text if there isn't one

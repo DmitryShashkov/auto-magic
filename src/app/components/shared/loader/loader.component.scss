@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/colors";
+
 .loader {
     position: fixed;
     top: 0;
@@ -11,6 +13,7 @@
     opacity: 1;
     z-index: 1000;
     transition: opacity 0.3s ease-in-out;
+    background-color: rgba(43, 43, 43, 0.5);
 
     &.hidden {
         pointer-events: none;

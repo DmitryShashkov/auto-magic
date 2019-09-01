@@ -1,55 +1,56 @@
-<div class="card">
-    <div class="card__texture-layer"></div>
-
-    <div class="card__color-layer"
-        [class.mana-colorless]="card?.isColorless"
-        [class.mana-white]="card?.isWhite"
-        [class.mana-blue]="card?.isBlue"
-        [class.mana-black]="card?.isBlack"
-        [class.mana-red]="card?.isRed"
-        [class.mana-green]="card?.isGreen"
-        [class.mana-multi-colored]="card?.isMultiColored">
+<div class="card d-flex fd-column ai-start jc-space-between">
+    <div class="card__texture-layer">
+        <div class="card__color-layer"
+            [class.mana-colorless]="card?.isColorless"
+            [class.mana-white]="card?.isWhite"
+            [class.mana-blue]="card?.isBlue"
+            [class.mana-black]="card?.isBlack"
+            [class.mana-red]="card?.isRed"
+            [class.mana-green]="card?.isGreen"
+            [class.mana-multi-colored]="card?.isMultiColored">
+        </div>
     </div>
 
-    <div class="card__background">
-        <article class="article">
-            <div class="card__body"></div>
+    <div class="card__content-layer">
+        <div class="content__header-wrapper">
+            <h3 class="content__header">
+                {{ card?.name }}
+            </h3>
+        </div>
 
-            <header class="header card__name">
-                <div>
-                    <h1>{{ card?.name }}</h1>
-                </div>
-            </header>
-                
-            <div class="card__art">
-                <img [src]="card?.artCrop" [alt]="card?.name" />
+        <div class="content__art-wrapper">
+            <div class="content__art" 
+                progressiveImage
+                [width]="323"
+                [height]="237"
+                [source]="card?.artCrop">
             </div>
+        </div>
 
-            <header class="header card__type">
-                <div>
-                    <h2>{{ card?.typeLine }}</h2>
-                </div>
-            </header>
-        
-            <div class="card__text-box">
+        <div class="content__type-wrapper">
+            <h5 class="content__type">
+                {{ card?.typeLine }}
+            </h5>
+        </div>
+
+        <div class="content__text-wrapper">
+            <div class="content__text d-flex fd-column ai-start jc-center">
                 <p>{{ card?.text }}</p>
 
                 <blockquote>
                     <p>{{ card?.flavorText }}</p>
                 </blockquote>
-            </div>	
+            </div>
+        </div>
 
-            <header class="header power-toughness" *ngIf="card?.power">
-                <div>
-                    <h2>{{ card?.power }}/{{ card?.toughness }}</h2>
-                </div>
-            </header>
-        
-            <footer>
-                <p>Art by {{ card?.artist?.name }}</p>
-            </footer>
-        </article>      
+        <div class="content__pt-wrapper" *ngIf="card?.power">
+            <div class="content__pt">
+                {{ card?.power }}/{{ card?.toughness }}
+            </div>
+        </div>
     </div>
-</div>		
-<!-- todo: refactor markup -->
-<!--  -->
+
+    <div class="card__artist" [title]="card?.artist?.name">
+        Art by {{ card?.artist?.name }}
+    </div>
+</div>

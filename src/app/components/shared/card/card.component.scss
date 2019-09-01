@@ -1,180 +1,171 @@
-@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/ellipsis";
+
+// shadows
+$shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.75);
+$shadow-header-wrapper: -2px 0 0 0 rgba(0,0,0,.8);
+$shadow-header: inset 2px -3px 0 #aaa, inset -1px 1px 0 #fff;
+$shadow-pt-wrapper: -2px 1px 2px 0 rgba(0,0,0,.8);
+$shadow-pt: inset -2px 2px 1px #333, inset 1px -1px 0 #fff;
+
+// colors
+$color-header: #ddd;
+
+// gradients
+$gradient-header-bg: radial-gradient(ellipse farthest-corner,#e0e7ed 50%,#bdc6cd);
+
+// borders
+$border-dark: 2px solid rgba(0, 0, 0, 0.8);
+$border-medium: 2px solid #333;
+$border-light: 2px solid #999;
+
+// widths
+$width-outer: 332px;
+$width-inner: 323px;
 
 .card {
     background: $color-black;
     color: $color-black;
-	padding: 17px; 
-	height: 550px; 
-	width: 400px;
-	margin: 50px auto; 
-	border-radius: 5px; 
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
-    overflow: hidden;
+    padding: 17px 17px 10px;
+    height: 550px;
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: $shadow-card;
     position: relative;
-    
+
     &__texture-layer, &__color-layer {
         border-radius: 10px 10px 40px 40px;
         height: 475px;
-        width: 366px;
-        position: absolute;
-        top: 17px;
-        left: 17px;
+        width: 100%;
     }
 
     &__texture-layer {
         background-image: url("../../../../assets/images/card-bg-texture.jpg");
+        position: relative;
     }
 
     &__color-layer {
         opacity: 0.7;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 11px 0;
     }
 
-    &__background {
-        padding: 7px 8px 30px 7px;
-        height: 475px;
+    &__artist {
+        color: $color-cadet-blue;
+        font-family: 'Matrix', sans-serif;
+        font-size: 16px;
+        line-height: 1.1;
+        width: 100%;
+
+        @include single-line-ellipsis();
     }
 
-    &__body {
-        position: relative; 
-        height: 485px;
-        width: 97%;
-        border: 2px solid rgba(0, 0, 0, 0.8);
-        border-right: 2px solid #ddd;
-        border-bottom: 2px solid #555;
-        border-radius: 5px 5px 0 0;
-        background: #ddd;
-        z-index: 0;
-        margin: 0 auto;
+    &__content-layer {
+        position: absolute;
+        top: 27px;
+        left: 28px;
+        right: 28px;
     }
+}
 
-    &__name {
-        top: -485px;
-        font-family: 'Beleren';
+.content {
+    &__header, &__type {
+        &-wrapper {
+            padding: 3px;
+            background: $color-header;
+            border-radius: 8px/20px;
+            box-shadow: $shadow-header-wrapper;
+        }
+
+        font-family: 'Beleren', sans-serif;
         font-weight: 600;
+        background: $gradient-header-bg;
+        border: 2px solid $color-black;
+        border-radius: 10px/20px;
+        box-shadow: $shadow-header;
+        height: 33px;
+        padding: 4px 8px 0;
+        line-height: 1;
 
-        div {
-            height: 34px; 
-        }
+        @include single-line-ellipsis();
     }
 
-    &__art { 
-        background: #ddd;
-        position: relative;
-        height: 235.031px;
-        border: 2px solid #333;
-        z-index: 2;
-        width: 95%;
-        margin: 0 auto;
-        top: -485px;
-
-        img {
-            width: 100%;
-            height: auto;
-            position: relative;
-        }
+    &__header {
+        font-size: 21px;
     }
 
     &__type {
-        font-family: 'Beleren';
-        font-weight: 600;
+        font-size: 18px;
+        padding-top: 5px;
     }
 
-    &__text-box {
-        font-family: 'Matrix';
+    &__art {
+        &-wrapper {
+            width: $width-outer;
+            background: $color-header;
+            margin: 0 auto;
+            border-left: $border-dark;
+        }
+
+        border: $border-medium;
+        margin: 0 auto;
+    }
+
+    &__text {
+        &-wrapper {
+            width: $width-outer;
+            margin: 0 auto;
+            border-left: $border-dark;
+            border-bottom: $border-dark;
+            background-color: $color-header;
+            padding-bottom: 2px;
+        }
+
+        font-family: 'Matrix', sans-serif;
         font-size: 19px;
-        background: #d3dddd;
-        width: 95%;
         height: 169px;
         margin: 0 auto;
-        padding: 10px 10px;
-        top: -485px; bottom: 44px;
-        border: 2px solid #999;
-        border-bottom: 0 none;
-        border-left: 0 none;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+        padding: 10px;
+        border: $border-light;
+        width: $width-inner;
 
-    .power-toughness {
-        top: -496px; right: 0;
-        text-align: center; 
-        box-shadow: -2px 1px 2px 0 rgba(0, 0, 0, 0.8);
-        float: right;
-        overflow: hidden;
-        font-family: 'Beleren';
-        font-weight: 600;
-    
-        div {
-            padding: 4px 15px 0; 
-            height: 23px;
-            box-shadow: inset -2px 2px 1px #333, inset 1px -1px 0 #fff;
-            border: 0 none;
-            font-size: 21px;
+        p {
+            margin-bottom: 11px; 
+            line-height: 1.1; 
+        }
+        
+        blockquote {
+            font-style: italic;
         }
     }
-}
 
-.article {
-    padding: 3px;
-    width: 350px;
-}
+    &__pt {
+        &-wrapper {
+            box-shadow: $shadow-pt-wrapper;
+            padding: 3px;
+            background: $color-header;
+            border-radius: 8px/20px;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+        }
 
-.header {
-    padding: 3px; 
-    background: #ddd;
-    border-radius: 8px/20px;
-    box-shadow: -2px 0 0 0 rgba(0, 0, 0, 0.8);
-    position: relative;
-    top: -485px; left: 0; right: 0; 
-    z-index: 2;
-
-    div {
-        padding: 4px 8px 3px; 
-        background: radial-gradient(ellipse farthest-corner, #E0E7ED 50%, #BDC6CD);
-        position: relative;
-        border: 2px solid #000; 
+        background: $gradient-header-bg;
         border-radius: 10px/20px;
-        box-shadow: inset 2px -3px 0 #aaa, inset -1px 1px 0 #fff;
-        height: 33px; 
+        padding: 3px 15px 0;
+        height: 23px;
+        box-shadow: $shadow-pt;
+        border: 0;
+        font-size: 21px;
+        display: inline-block;
+        font-size: 18px;
+        line-height: 1em;
+        font-family: 'Beleren', sans-serif;
+        font-weight: 600;
     }
 }
 
-h1, h2 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-h1 {
-	font-size: 21px; 
-	line-height: 1em; 
-}
-
-h2 {
-	font-size: 18px; 
-    line-height: 1em;
-}
-
-p {
-	margin-bottom: 0.6em; 
-	line-height: 1.1em; 
-}
-
-blockquote {
-    font-style: italic;
-}
-
-footer {
-    color: #ccc;
-    font-family: sans-serif; 
-    position: relative;
-    top: -470px;
-    left: 5px; 
-    right: 5px;
-    width: 100%;
-    font-family: 'Matrix';
-}
-
-//     opacity: 0.7;
+// todo: add typography css

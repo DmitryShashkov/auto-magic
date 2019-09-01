@@ -66,3 +66,5 @@ export class LoaderService implements OnDestroy {
         this.subscriptions.unsubscribe();
     }
 }
+
+// todo: show "we're still loading" message when loading taked more than 5s

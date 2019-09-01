@@ -3,9 +3,9 @@ import { DOCUMENT } from '@angular/common';
 import { GOOGLE_CLIENT_ID, SELF_URL } from '../../../../environments/environment';
 import { RoutingContract } from '../../../core/contracts/routing.contract';
 import { CardsService } from '../../../services/cards.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { CardModel } from '../../../models/card.model';
-import { map } from 'rxjs/operators';
+import { map, filter, delay } from 'rxjs/operators';
 
 @Component({
     selector: 'am-home',
@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+    public readonly isCardClicked: BehaviorSubject<boolean> = new BehaviorSubject(false);
     public randomCard: Observable<CardModel>;
 
     constructor (
@@ -28,9 +29,18 @@ export class HomeComponent implements OnInit {
                 return card;
             }),
         );
+
+        this.isCardClicked.pipe(
+            filter((isClicked) => isClicked),
+            delay(500),
+        ).subscribe(this.signIn.bind(this));
+    }
+
+    public onCardClicked (): void {
+        this.isCardClicked.next(true);
     }
     
-    public signIn (): void {
+    private signIn (): void {
         const redirectUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
         const scopes: string[] = [
             'https://www.googleapis.com/auth/userinfo.email',

@@ -1,18 +1,9 @@
-<!-- <am-card
-    [card]="randomCard | async">
-</am-card>	 -->
-
-<!-- <div style="height: 25000px"></div> -->
-
-<!-- <img loading="lazy" *ngIf="(randomCard | async) as card" -->
-<!-- <img *ngIf="(randomCard | async) as card"
-    [src]="card.artCrop"
-/> -->
-
-<div progressiveImage
-    [width]="400"
-    [height]="300"
-    [source]="(randomCard | async)?.artCrop">
+<div class="home d-flex ai-center jc-center">
+    <div class="card-wrapper" [class.clicked]="isCardClicked | async">
+        <am-card 
+            [class.clicked]="isCardClicked | async"
+            [card]="randomCard | async"
+            (click)="onCardClicked()">
+        </am-card>	
+    </div>
 </div>
-
-<!-- <img loading="lazy" src="https://img.scryfall.com/cards/art_crop/front/4/9/494f761a-dbc4-4cfa-a258-e4de46bb825e.jpg?1562786449" /> -->

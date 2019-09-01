@@ -1,0 +1,36 @@
+.d-flex {
+    display: flex;
+}
+
+.ai {
+    &-start {
+        align-items: flex-start;
+    }
+    &-end {
+        align-items: flex-end;
+    }
+    &-center {
+        align-items: center;
+    }
+}
+
+.jc {
+    &-start {
+        justify-content: flex-start;
+    }
+    &-end {
+        justify-content: flex-end;
+    }
+    &-center {
+        justify-content: center;
+    }
+    &-space-between {
+        justify-content: space-between;
+    }
+}
+
+.fd {
+    &-column {
+        flex-direction: column;
+    }
+}
