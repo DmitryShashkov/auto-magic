@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 import { RoutingContract } from '../../../core/contracts/routing.contract';
 
 export const UNAUTHORIZED_LAYOUT_ROUTES: Routes = [

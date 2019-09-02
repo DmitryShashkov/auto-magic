@@ -6,13 +6,13 @@ import { ApplicationRef, ComponentFactory, ComponentFactoryResolver, ComponentRe
  * Honestly stolen from SO and adapted to our needs.
  */
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class InjectionService {
     // container for injecting
     private container: HTMLElement;
 
-    constructor(
+    constructor (
         private readonly applicationRef: ApplicationRef,
         private readonly resolver: ComponentFactoryResolver,
         private readonly injector: Injector,
@@ -21,7 +21,7 @@ export class InjectionService {
     /**
      * Get root node of specified component as HTML element.
      */
-    private static getComponentRootNode(componentRef: ComponentRef<any>): HTMLElement {
+    private static getComponentRootNode (componentRef: ComponentRef<any>): HTMLElement {
         const hostEmbeddedView: EmbeddedViewRef<any> = componentRef.hostView as EmbeddedViewRef<any>;
         return hostEmbeddedView.rootNodes[0] as HTMLElement;
     }
@@ -29,7 +29,7 @@ export class InjectionService {
     /**
      * Map specified options to component's inputs.
      */
-    private static projectComponentInputs(component: ComponentRef<any>, options?: any): void {
+    private static projectComponentInputs (component: ComponentRef<any>, options?: any): void {
         if (!options) {
             return;
         }
@@ -45,7 +45,7 @@ export class InjectionService {
      * Set default root view container manually
      * (may be useful when there are no root components - for example, with ngUpgrade).
      */
-    public setRootViewContainer(container: HTMLElement): void {
+    public setRootViewContainer (container: HTMLElement): void {
         this.container = container;
     }
 
@@ -53,7 +53,7 @@ export class InjectionService {
      * Inject component into specific location (or root).
      * Returns reference to constructed component.
      */
-    public appendComponent<T>(componentClass: Type<T>, options?: any): ComponentRef<any> {
+    public appendComponent<T> (componentClass: Type<T>, options?: any): ComponentRef<any> {
         // we'll inject component into root view container if
         // location weren't specified
         const targetContainer: HTMLElement = this.container;

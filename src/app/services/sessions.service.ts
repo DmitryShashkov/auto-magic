@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { ServiceBase } from "../core/classes/service.base";
-import { Observable, BehaviorSubject } from "rxjs";
-import { UserModel } from "../models/user.model";
+import { Injectable } from '@angular/core';
+import { ServiceBase } from '../core/classes/service.base';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { UserModel } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
-import { plainToClass } from "class-transformer";
-import { Storage } from "../core/utils/storage";
+import { plainToClass } from 'class-transformer';
+import { Storage } from '../core/utils/storage';
 
 @Injectable({ providedIn: 'root' })
 export class SessionsService extends ServiceBase {

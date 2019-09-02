@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 export const PROGRESSIVE_IMAGE_LOADER_DATA: string = `
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" x="0px" y="0px">
     <g id="outer">

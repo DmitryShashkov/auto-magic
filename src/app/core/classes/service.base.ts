@@ -1,4 +1,4 @@
-import { API_URL } from "../../../../src/environments/environment";
+import { API_URL } from '../../../environments/environment';
 
 export class ServiceBase {
     constructor (

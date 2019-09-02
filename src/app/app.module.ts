@@ -11,7 +11,7 @@ import { LoaderModule } from './components/shared/loader/loader.module';
         BrowserModule,
         HttpClientModule,
         LoaderModule,
-        RouterModule.forRoot(APP_ROUTES)
+        RouterModule.forRoot(APP_ROUTES),
     ],
     declarations: [
         AppComponent,

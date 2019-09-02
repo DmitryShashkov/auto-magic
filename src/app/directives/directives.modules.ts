@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { ProgressiveImageDirective } from "./progressive-image/progressive-image.directive";
+import { NgModule } from '@angular/core';
+import { ProgressiveImageDirective } from './progressive-image/progressive-image.directive';
 
 @NgModule({
     declarations: [

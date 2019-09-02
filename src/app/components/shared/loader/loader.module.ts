@@ -22,7 +22,7 @@ import { LoaderInterceptor } from './loader.interceptor';
             provide: HTTP_INTERCEPTORS,
             useClass: LoaderInterceptor,
             multi: true,
-        }
+        },
     ],
 })
 export class LoaderModule { }

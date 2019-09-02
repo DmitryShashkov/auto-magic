@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Input, OnChanges, AfterViewInit, Inject } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
-import { PROGRESSIVE_IMAGE_LOADER_DATA } from "./progressive-image.loader-data";
-import { Subject, combineLatest } from "rxjs";
-import { first } from "rxjs/operators";
+import { Directive, ElementRef, Input, OnChanges, AfterViewInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { PROGRESSIVE_IMAGE_LOADER_DATA } from './progressive-image.loader-data';
+import { Subject, combineLatest } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Directive({
-    selector: '[progressiveImage]'
+    selector: '[progressiveImage]',
 })
 export class ProgressiveImageDirective implements OnChanges, AfterViewInit {
     @Input() public width: number = 0;

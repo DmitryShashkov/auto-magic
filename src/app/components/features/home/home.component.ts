@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     public onCardClicked (): void {
         this.isCardClicked.next(true);
     }
-    
+
     private signIn (): void {
         const redirectUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
         const scopes: string[] = [
@@ -47,13 +47,13 @@ export class HomeComponent implements OnInit {
             'https://www.googleapis.com/auth/userinfo.profile',
             'openid',
         ];
-        
+
         redirectUrl.searchParams.append('access_type', 'offline');
         redirectUrl.searchParams.append('scope', scopes.join(' '));
         redirectUrl.searchParams.append('response_type', 'code');
         redirectUrl.searchParams.append('client_id', GOOGLE_CLIENT_ID);
         redirectUrl.searchParams.append('redirect_uri', `${SELF_URL}/${RoutingContract.CompleteSignIn.ROOT}`);
-        
+
         this.document.location.href = redirectUrl.href;
     }
 }

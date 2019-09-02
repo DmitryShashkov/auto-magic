@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, Input } from "@angular/core";
-import { CardModel } from "../../../models/card.model";
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { CardModel } from '../../../models/card.model';
 
 @Component({
     selector: 'am-card',

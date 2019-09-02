@@ -1,6 +1,5 @@
-import { serialize, deserialize } from "class-transformer";
-import { ClassType } from "class-transformer/ClassTransformer";
-
+import { serialize, deserialize } from 'class-transformer';
+import { ClassType } from 'class-transformer/ClassTransformer';
 
 export class Storage<T> {
     private static readonly APP_PREFIX = 'am';
