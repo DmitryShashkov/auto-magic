@@ -6,6 +6,7 @@ import { CardsService } from '../../../services/cards.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CardModel } from '../../../models/card.model';
 import { map, filter, delay } from 'rxjs/operators';
+import { HINTS } from './home.hints';
 
 @Component({
     selector: 'am-home',
@@ -26,6 +27,11 @@ export class HomeComponent implements OnInit {
         this.randomCard = this.cardsService.getRandom().pipe(
             map((card: CardModel) => {
                 card.text = `Click ${card.name}: enter the game.`;
+
+                if (!card.flavorText) {
+                    card.flavorText = HINTS[Math.floor(Math.random() * HINTS.length)];
+                }
+
                 return card;
             }),
         );

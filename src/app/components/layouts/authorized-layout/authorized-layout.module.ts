@@ -15,6 +15,6 @@ import { AuthorizedGuard } from 'src/app/core/guards/authorized.guards';
     ],
     providers: [
         AuthorizedGuard,
-    ]
+    ],
 })
 export class AuthorizedLayoutModule { }

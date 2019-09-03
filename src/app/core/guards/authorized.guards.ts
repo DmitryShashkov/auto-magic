@@ -1,8 +1,8 @@
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { Injectable } from "@angular/core";
-import { SessionsService } from "../../services/sessions.service";
-import { map, tap } from "rxjs/operators";
+import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { SessionsService } from '../../services/sessions.service';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthorizedGuard implements CanActivate, CanActivateChild {
