@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GameComponent } from './game.component';
 import { RouterModule } from '@angular/router';
 import { GAME_ROUTES } from './game.router';
+import { GamesListComponent } from './components/games-list/games-list.component';
 
 @NgModule({
     imports: [
@@ -10,6 +11,7 @@ import { GAME_ROUTES } from './game.router';
         RouterModule.forChild(GAME_ROUTES),
     ],
     declarations: [
+        GamesListComponent,
         GameComponent,
     ],
 })

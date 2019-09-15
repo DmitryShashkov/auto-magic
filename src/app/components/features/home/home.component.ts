@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
     }
 
     private enterTheGame (): void {
-        this.router.navigate([`/${RoutingContract.Game.ROOT}`]);
+        // this.router.navigate([`/${RoutingContract.Game.ROOT}`]);
+        this.router.navigate(['games', 'list']);
     }
 }

@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CardsService extends ServiceBase {
     constructor (
         private readonly httpClient: HttpClient,

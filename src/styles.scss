@@ -9,11 +9,16 @@ body {
     color: $color-periwinkle;
 }
 
-#page-wrapper {
-    min-height: 100vh;
-    overflow-y: scroll;
+// #page-wrapper {
+//     min-height: 100vh;
+//     overflow-y: scroll;
     
-    &.blurred {
-        filter: blur(5px) grayscale(1);
-    }
+//     &.blurred {
+//         filter: blur(5px) grayscale(1);
+//     }
+// }
+
+h1 {
+    text-align: center;
+    color: #000;
 }

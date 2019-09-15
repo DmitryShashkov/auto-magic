@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/features/home/home.component';
 
 export const APP_ROUTES: Routes = [
     {
         path: '',
-        loadChildren: './components/layouts/unauthorized-layout/unauthorized-layout.module#UnauthorizedLayoutModule',
+        component: HomeComponent,
+        data: { state: 'home' },
     },
     {
-        path: '',
-        loadChildren: './components/layouts/authorized-layout/authorized-layout.module#AuthorizedLayoutModule',
+        path: 'games',
+        loadChildren: () => import('./components/features/game/game.module').then((a) => a.GameModule),
     },
 ];
