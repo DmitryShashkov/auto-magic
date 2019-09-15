@@ -24,6 +24,7 @@ export const routerTransition = trigger('routerTransition', [
             ),
         ]),
 
+        // https://github.com/angular/angular/issues/15477
         query('router-outlet ~ *', [style({}), animate(1, style({}))], { optional: true }),
     ]),
 ]);
