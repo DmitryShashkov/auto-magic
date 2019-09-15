@@ -5,5 +5,6 @@ export const GAME_ROUTES: Routes = [
     {
         path: '',
         component: GameComponent,
+        data: { animation: 'AboutPage' },
     },
 ];

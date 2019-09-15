@@ -12,6 +12,10 @@ export class SessionsService extends ServiceBase {
     private readonly storage: Storage<UserModel> = new Storage('user', UserModel);
     public readonly currentUser: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(null);
 
+    public get isSignedIn (): boolean {
+        return !!this.currentUser.value;
+    }
+
     constructor (
         private readonly httpClient: HttpClient,
     ) {
@@ -19,15 +23,17 @@ export class SessionsService extends ServiceBase {
         this.currentUser.next(this.storage.restore());
     }
 
+    public saveUser (user: UserModel): void {
+        this.storage.save(user);
+        this.currentUser.next(user);
+    }
+
     public signIn (code: string): Observable<UserModel> {
         return this.httpClient
             .post(this.apiEndpoint, { code })
             .pipe(
                 map((data) => plainToClass(UserModel, data)),
-                tap((user) => {
-                    this.storage.save(user);
-                    this.currentUser.next(user);
-                }),
+                tap(this.saveUser.bind(this)),
             );
     }
 

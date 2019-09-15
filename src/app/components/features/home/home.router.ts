@@ -6,5 +6,6 @@ export const HOME_ROUTES: Routes = [
         path: '',
         pathMatch: 'full',
         component: HomeComponent,
+        data: { animation: 'HomePage' },
     },
 ];

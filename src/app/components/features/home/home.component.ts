@@ -3,10 +3,13 @@ import { DOCUMENT } from '@angular/common';
 import { GOOGLE_CLIENT_ID, SELF_URL } from '../../../../environments/environment';
 import { RoutingContract } from '../../../core/contracts/routing.contract';
 import { CardsService } from '../../../services/cards.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { CardModel } from '../../../models/card.model';
-import { map, filter, delay } from 'rxjs/operators';
+import { map, filter, delay, switchMap, tap } from 'rxjs/operators';
 import { HINTS } from './home.hints';
+import { SessionsService } from 'src/app/services/sessions.service';
+import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'am-home',
@@ -21,6 +24,9 @@ export class HomeComponent implements OnInit {
     constructor (
         @Inject(DOCUMENT) private readonly document: Document,
         private readonly cardsService: CardsService,
+        private readonly sessionsService: SessionsService,
+        private readonly usersService: UsersService,
+        private readonly router: Router,
     ) { }
 
     public ngOnInit (): void {
@@ -39,7 +45,17 @@ export class HomeComponent implements OnInit {
         this.isCardClicked.pipe(
             filter((isClicked) => isClicked),
             delay(500),
-        ).subscribe(this.signIn.bind(this));
+            switchMap(() => {
+                return (this.sessionsService.isSignedIn)
+                    ? of(null)
+                    : this.usersService.createTemporaryUser();
+            }),
+            tap((newUser) => {
+                if (newUser) {
+                    this.sessionsService.saveUser(newUser);
+                }
+            }),
+        ).subscribe(this.enterTheGame.bind(this));
     }
 
     public onCardClicked (): void {
@@ -47,6 +63,7 @@ export class HomeComponent implements OnInit {
     }
 
     private signIn (): void {
+        // todo: move this functionality to profile settings
         const redirectUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
         const scopes: string[] = [
             'https://www.googleapis.com/auth/userinfo.email',
@@ -61,5 +78,9 @@ export class HomeComponent implements OnInit {
         redirectUrl.searchParams.append('redirect_uri', `${SELF_URL}/${RoutingContract.CompleteSignIn.ROOT}`);
 
         this.document.location.href = redirectUrl.href;
+    }
+
+    private enterTheGame (): void {
+        this.router.navigate([`/${RoutingContract.Game.ROOT}`]);
     }
 }

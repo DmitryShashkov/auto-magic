@@ -1,4 +1,5 @@
 import { Expose, Type } from 'class-transformer';
+import { TokenModel } from './token.model';
 
 export class UserModel {
     @Expose() public id: number;
@@ -12,5 +13,6 @@ export class UserModel {
 
     @Expose() public name: string;
 
-    @Expose() public currentToken: string;
+    @Type(() => TokenModel)
+    @Expose() public tokens: TokenModel[];
 }
