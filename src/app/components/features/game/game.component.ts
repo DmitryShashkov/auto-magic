@@ -1,7 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Type } from '@angular/core';
 import { HasAnimatedTransitions } from 'src/app/core/types/has-animated-transitions';
-import { RouterOutlet } from '@angular/router';
 import { routerTransition } from 'src/app/core/animations';
+import { AnimationStateService } from 'src/app/services/animation-state.service';
+import { Observable } from 'rxjs';
+import { MetaDataContract } from 'src/app/core/contracts/meta-data.contract';
+import 'reflect-metadata';
 
 @Component({
     selector: 'am-game',
@@ -11,9 +14,17 @@ import { routerTransition } from 'src/app/core/animations';
     animations: [routerTransition],
 })
 export class GameComponent implements HasAnimatedTransitions {
-    public getAnimationState (outlet: RouterOutlet): string {
-        return outlet
-            && outlet.activatedRouteData
-            && outlet.activatedRouteData['state'];
+    constructor (
+        private readonly animationStateService: AnimationStateService,
+    ) { }
+
+    public get animationState (): Observable<string> {
+        return this.animationStateService.currentState;
+    }
+    public setAnimationState (nextComponent: Function): void {
+        const nextState: string = Reflect.get(nextComponent.constructor, MetaDataContract.ANIMATION_STATE);
+        if (nextState) {
+            this.animationStateService.setState(nextState);
+        }
     }
 }

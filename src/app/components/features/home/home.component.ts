@@ -10,6 +10,8 @@ import { HINTS } from './home.hints';
 import { SessionsService } from 'src/app/services/sessions.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { AnimationState } from 'src/app/core/decorators/animation-state.decorator';
+import { AnimationsContract } from 'src/app/core/contracts/animations.contract';
 
 @Component({
     selector: 'am-home',
@@ -17,6 +19,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+@AnimationState(AnimationsContract.Home.ROOT)
 export class HomeComponent implements OnInit {
     public readonly isCardClicked: BehaviorSubject<boolean> = new BehaviorSubject(false);
     public randomCard: Observable<CardModel>;

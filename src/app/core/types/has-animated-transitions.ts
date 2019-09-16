@@ -1,5 +1,6 @@
-import { RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
 
 export interface HasAnimatedTransitions {
-    getAnimationState: (outlet: RouterOutlet) => string;
+    animationState: Observable<string>;
+    setAnimationState: (nextComponent: Function) => void;
 }

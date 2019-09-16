@@ -71,10 +71,5 @@ $mana-multi-colored: #ab8545;
 
 // three or more colors
 .mana-multi-colored {
-    background-color: $mana-multi-colored !important;
+    background: $mana-multi-colored !important;
 }
-
-
-
-    
-    // opacity: 0.7;
