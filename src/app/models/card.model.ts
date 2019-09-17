@@ -54,6 +54,6 @@ export class CardModel {
         return this.colors.includes('G');
     }
     public get isMultiColored (): boolean {
-        return this.colors.length > 1;
+        return this.colors.length > 2;
     }
 }
