@@ -3,10 +3,10 @@ import { AnimationState } from 'src/app/core/decorators/animation-state.decorato
 import { AnimationsContract } from 'src/app/core/contracts/animations.contract';
 
 @Component({
-    selector: 'am-games-list',
-    templateUrl: './games-list.component.html',
-    styleUrls: ['./games-list.component.scss'],
+    selector: 'am-battles-list',
+    templateUrl: './battles-list.component.html',
+    styleUrls: ['./battles-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-@AnimationState(AnimationsContract.Games.LIST)
-export class GamesListComponent { }
+@AnimationState(AnimationsContract.Battles.LIST)
+export class BattlesListComponent { }

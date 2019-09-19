@@ -19,7 +19,7 @@ export class CompleteSignInComponent implements OnInit {
     public ngOnInit (): void {
         const code: string = this.activatedRoute.snapshot.queryParamMap.get('code');
         this.sessionsService.signIn(code).subscribe(() => {
-            this.router.navigate([`/${RoutingContract.Games.LIST}`]);
+            this.router.navigate([`/${RoutingContract.Battles.LIST}`]);
         });
     }
 }

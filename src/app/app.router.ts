@@ -8,8 +8,8 @@ export const APP_ROUTES: Routes = [
         component: HomeComponent,
     },
     {
-        path: RoutingContract.Games.ROOT,
-        loadChildren: () => import('./components/features/game/game.module')
-            .then((factory) => factory.GameModule),
+        path: RoutingContract.Battles.ROOT,
+        loadChildren: () => import('./components/features/battles/battles.module')
+            .then((factory) => factory.BattlesModule),
     },
 ];

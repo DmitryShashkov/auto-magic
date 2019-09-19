@@ -7,13 +7,13 @@ import { MetaDataContract } from 'src/app/core/contracts/meta-data.contract';
 import 'reflect-metadata';
 
 @Component({
-    selector: 'am-game',
-    templateUrl: './game.component.html',
-    styleUrls: ['./game.component.scss'],
+    selector: 'am-battles',
+    templateUrl: './battles.component.html',
+    styleUrls: ['./battles.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [routerTransition],
 })
-export class GameComponent implements HasAnimatedTransitions {
+export class BattlesComponent implements HasAnimatedTransitions {
     constructor (
         private readonly animationStateService: AnimationStateService,
     ) { }

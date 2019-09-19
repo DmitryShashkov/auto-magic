@@ -5,8 +5,8 @@ export namespace RoutingContract {
         export const ROOT = 'complete-sign-in';
     }
 
-    export namespace Games {
-        export const ROOT = 'games';
+    export namespace Battles {
+        export const ROOT = 'battles';
         export const LIST = 'list';
     }
 }

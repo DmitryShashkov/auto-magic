@@ -5,7 +5,7 @@ export namespace AnimationsContract {
         export const ROOT = 'home';
     }
 
-    export namespace Games {
-        export const LIST = 'games-list';
+    export namespace Battles {
+        export const LIST = 'battles-list';
     }
 }
