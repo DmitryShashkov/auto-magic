@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoaderModule } from './components/shared/loader/loader.module';
 import { HomeComponent } from './components/features/home/home.component';
 import { CardModule } from './components/shared/card/card.module';
+import { BearerModule } from './core/utils/bearer/bearer.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { CardModule } from './components/shared/card/card.module';
         HttpClientModule,
         CardModule,
         LoaderModule,
+        BearerModule,
         RouterModule.forRoot(APP_ROUTES),
     ],
     declarations: [

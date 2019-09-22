@@ -1,1 +1,4 @@
 <h1>Game</h1>
+<div *ngFor="let battle of battlesTable.data | async">
+    {{ battle.id }}
+</div>

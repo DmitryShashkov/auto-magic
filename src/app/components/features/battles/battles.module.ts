@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BATTLES_ROUTES } from './battles.router';
 import { BattlesListComponent } from './components/battles-list/battles-list.component';
 import { BattlesComponent } from './battles.component';
+import { BattlesService } from './battles.service';
 
 @NgModule({
     imports: [
@@ -13,6 +14,9 @@ import { BattlesComponent } from './battles.component';
     declarations: [
         BattlesListComponent,
         BattlesComponent,
+    ],
+    providers: [
+        BattlesService,
     ],
 })
 export class BattlesModule {}
