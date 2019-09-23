@@ -2,3 +2,7 @@
 <div *ngFor="let battle of battlesTable.data | async">
     {{ battle.id }}
 </div>
+<am-paginator
+    [rows]="10"
+    [totalRecords]="battlesTable.total | async">
+</am-paginator>

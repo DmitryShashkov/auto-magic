@@ -6,6 +6,7 @@ import { Table } from 'src/app/core/utils/table/table';
 import { BattleModel } from 'src/app/models/battle.model';
 import { ActivatedRoute } from '@angular/router';
 import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url.filter-provider';
+import { DEFAULT_LIMIT } from '../../../../../app.constants';
 
 @Component({
     selector: 'am-battles-list',
@@ -16,6 +17,7 @@ import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url
 @AnimationState(AnimationsContract.Battles.LIST)
 export class BattlesListComponent {
     public battlesTable: Table<BattleModel>;
+    public limit: number = DEFAULT_LIMIT;
 
     constructor (
         private readonly battlesService: BattlesService,

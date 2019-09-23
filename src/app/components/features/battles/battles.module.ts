@@ -5,10 +5,12 @@ import { BATTLES_ROUTES } from './battles.router';
 import { BattlesListComponent } from './components/battles-list/battles-list.component';
 import { BattlesComponent } from './battles.component';
 import { BattlesService } from './battles.service';
+import { PaginatorModule } from '../../shared/paginator/paginator.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        PaginatorModule,
         RouterModule.forChild(BATTLES_ROUTES),
     ],
     declarations: [
