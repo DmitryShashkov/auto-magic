@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { AnimationState } from 'src/app/core/decorators/animation-state.decorator';
 import { AnimationsContract } from 'src/app/core/contracts/animations.contract';
 import { BattlesService } from '../../battles.service';
@@ -7,6 +7,8 @@ import { BattleModel } from 'src/app/models/battle.model';
 import { ActivatedRoute } from '@angular/router';
 import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url.filter-provider';
 import { DEFAULT_LIMIT } from '../../../../../app.constants';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
     selector: 'am-battles-list',
@@ -15,17 +17,35 @@ import { DEFAULT_LIMIT } from '../../../../../app.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @AnimationState(AnimationsContract.Battles.LIST)
-export class BattlesListComponent {
+export class BattlesListComponent implements AfterViewInit, OnDestroy {
     public battlesTable: Table<BattleModel>;
     public limit: number = DEFAULT_LIMIT;
+
+    @ViewChildren('entry')
+    private entries: QueryList<ElementRef>;
 
     constructor (
         private readonly battlesService: BattlesService,
         private readonly activatedRoute: ActivatedRoute,
+        private readonly renderer: Renderer2,
     ) {
         this.battlesTable = new Table({
             filter: UrlFilterProvider.forRoute(this.activatedRoute),
             service: this.battlesService,
+        });
+    }
+
+    public ngAfterViewInit (): void {
+        of(null).pipe(delay(500)).subscribe(() => {
+            this.entries.forEach((entry) => {
+                this.renderer.addClass(entry.nativeElement, 'activated');
+            });
+        });
+    }
+
+    public ngOnDestroy (): void {
+        this.entries.forEach((entry) => {
+            this.renderer.removeClass(entry.nativeElement, 'activated');
         });
     }
 }

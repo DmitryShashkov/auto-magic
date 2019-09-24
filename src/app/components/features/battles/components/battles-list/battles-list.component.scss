@@ -1,0 +1,30 @@
+@import "../../../../../../assets/styles/colors";
+
+$list-length: 5;
+
+.battles-list {}
+
+.list {
+    height: 100vh;
+
+    &__entry {
+        width: 700px;
+        height: 200px;
+        margin-top: -45px;
+        border-radius: 15px 15px 15px 50px;
+        border: 5px solid $color-mine-shaft-approx;
+
+        background-color: #fff;
+        transition: transform linear 0.5s;
+
+        @for $i from 1 through $list-length {
+            &:nth-child(#{$i}n) {
+                transform: translateY(#{($list-length + 1 - $i) * 150}px);
+            }
+        }
+
+        &.activated {
+            transform: translateY(0);
+        }
+    }
+}

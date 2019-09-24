@@ -1,8 +1,18 @@
-<h1>Game</h1>
+<!-- <h1>Game</h1>
 <div *ngFor="let battle of battlesTable.data | async">
     {{ battle.id }}
 </div>
 <am-paginator
     [rows]="10"
     [totalRecords]="battlesTable.total | async">
-</am-paginator>
+</am-paginator> -->
+
+<div class="battles-list">
+    <div class="list d-flex fd-column-reverse ai-center jc-center">
+        <div class="list__entry" #entry></div>
+        <div class="list__entry" #entry></div>
+        <div class="list__entry" #entry></div>
+        <div class="list__entry" #entry></div>
+        <div class="list__entry" #entry></div>
+    </div>
+</div>
