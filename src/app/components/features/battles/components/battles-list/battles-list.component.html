@@ -1,18 +1,26 @@
-<!-- <h1>Game</h1>
-<div *ngFor="let battle of battlesTable.data | async">
-    {{ battle.id }}
-</div>
-<am-paginator
-    [rows]="10"
+
+<!-- <am-paginator
+    [rows]="limit"
     [totalRecords]="battlesTable.total | async">
 </am-paginator> -->
 
 <div class="battles-list">
-    <div class="list d-flex fd-column-reverse ai-center jc-center">
-        <div class="list__entry" #entry></div>
-        <div class="list__entry" #entry></div>
-        <div class="list__entry" #entry></div>
-        <div class="list__entry" #entry></div>
-        <div class="list__entry" #entry></div>
+    <div class="list d-flex ai-center jc-center fw-wrap">
+        <div class="list__entry" #entry *ngFor="let battle of battlesTable.data | async">
+            <div class="battle__title-image"
+                progressiveImage
+                [width]="400"
+                [height]="300"
+                [source]="battle.titleImage">
+            </div>
+
+            <div class="battle__caption">
+                <div class="battle__header">
+                    <!-- todo: pull -->
+                    25.09.2019 -
+                    <span class="emphasized">In progress</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

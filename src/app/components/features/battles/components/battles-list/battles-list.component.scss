@@ -5,26 +5,43 @@ $list-length: 5;
 .battles-list {}
 
 .list {
-    height: 100vh;
+    width: 840px;
+    margin: 0 auto;
+    height: 640px;
 
     &__entry {
-        width: 700px;
-        height: 200px;
-        margin-top: -45px;
-        border-radius: 15px 15px 15px 50px;
-        border: 5px solid $color-mine-shaft-approx;
+        width: 400px;
+        height: 300px;
+        margin: 0 10px;
+        position: relative;
+    }
+}
 
+.battle {
+    &__caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 30px;
+    }
+
+    &__header {
+        margin-top: 15px;
+        padding: 7px;
         background-color: #fff;
-        transition: transform linear 0.5s;
+        box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        color: #2b2b2b;
+        font-family: 'Matrix';
 
-        @for $i from 1 through $list-length {
-            &:nth-child(#{$i}n) {
-                transform: translateY(#{($list-length + 1 - $i) * 150}px);
-            }
-        }
-
-        &.activated {
-            transform: translateY(0);
+        .emphasized {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: 'Beleren';
         }
     }
 }

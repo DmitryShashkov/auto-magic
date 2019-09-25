@@ -17,9 +17,9 @@ import { delay } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @AnimationState(AnimationsContract.Battles.LIST)
-export class BattlesListComponent implements AfterViewInit, OnDestroy {
+export class BattlesListComponent {
     public battlesTable: Table<BattleModel>;
-    public limit: number = DEFAULT_LIMIT;
+    public limit: number = 4;
 
     @ViewChildren('entry')
     private entries: QueryList<ElementRef>;
@@ -30,22 +30,25 @@ export class BattlesListComponent implements AfterViewInit, OnDestroy {
         private readonly renderer: Renderer2,
     ) {
         this.battlesTable = new Table({
-            filter: UrlFilterProvider.forRoute(this.activatedRoute),
+            filter: UrlFilterProvider.forRoute(
+                this.activatedRoute,
+                { limit: this.limit },
+            ),
             service: this.battlesService,
         });
     }
 
-    public ngAfterViewInit (): void {
-        of(null).pipe(delay(500)).subscribe(() => {
-            this.entries.forEach((entry) => {
-                this.renderer.addClass(entry.nativeElement, 'activated');
-            });
-        });
-    }
+    // public ngAfterViewInit (): void {
+    //     of(null).pipe(delay(500)).subscribe(() => {
+    //         this.entries.forEach((entry) => {
+    //             this.renderer.addClass(entry.nativeElement, 'activated');
+    //         });
+    //     });
+    // }
 
-    public ngOnDestroy (): void {
-        this.entries.forEach((entry) => {
-            this.renderer.removeClass(entry.nativeElement, 'activated');
-        });
-    }
+    // public ngOnDestroy (): void {
+    //     this.entries.forEach((entry) => {
+    //         this.renderer.removeClass(entry.nativeElement, 'activated');
+    //     });
+    // }
 }

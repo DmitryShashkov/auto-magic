@@ -6,11 +6,13 @@ import { BattlesListComponent } from './components/battles-list/battles-list.com
 import { BattlesComponent } from './battles.component';
 import { BattlesService } from './battles.service';
 import { PaginatorModule } from '../../shared/paginator/paginator.module';
+import { DirectivesModule } from 'src/app/directives/directives.modules';
 
 @NgModule({
     imports: [
         CommonModule,
         PaginatorModule,
+        DirectivesModule,
         RouterModule.forChild(BATTLES_ROUTES),
     ],
     declarations: [
