@@ -6,7 +6,7 @@
 
 <div class="battles-list">
     <div class="list d-flex ai-center jc-center fw-wrap">
-        <div class="list__entry" #entry *ngFor="let battle of battlesTable.data | async">
+        <div class="list__entry battle" #entry *ngFor="let battle of battlesTable.data | async">
             <div class="battle__title-image"
                 progressiveImage
                 [width]="400"
@@ -15,10 +15,14 @@
             </div>
 
             <div class="battle__caption">
-                <div class="battle__header">
+                <div class="battle__panel battle__header">
                     <!-- todo: pull -->
                     25.09.2019 -
                     <span class="emphasized">In progress</span>
+                </div>
+
+                <div class="battle__panel battle__action">
+                    Continue
                 </div>
             </div>
         </div>
