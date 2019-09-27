@@ -33,4 +33,13 @@
     &-column {
         flex-direction: column;
     }
+    &-column-reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+.fw {
+    &-wrap {
+        flex-wrap: wrap;
+    }
 }
