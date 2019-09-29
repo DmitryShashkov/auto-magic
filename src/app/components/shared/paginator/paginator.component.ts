@@ -10,10 +10,19 @@ import { Router } from '@angular/router';
 })
 export class PaginatorComponent {
     @Input() public rows: number;
-    @Input() public totalRecords: number;
-    @Input() public useRouter: boolean = true;
+    @Input() private totalRecords: number;
+    @Input() private useRouter: boolean = true;
+
+    @Input() private firstPageRows: number;
 
     @Output() public pageChanged: EventEmitter<PageChangeEvent> = new EventEmitter();
+
+    public get calculatedTotalRecords (): number {
+        if (!this.totalRecords) { return 0; }
+        if (!this.firstPageRows) { return this.totalRecords; }
+
+        return this.totalRecords - this.firstPageRows + this.rows;
+    }
 
     constructor (
         private readonly router: Router,
@@ -23,10 +32,13 @@ export class PaginatorComponent {
         this.pageChanged.emit(event);
 
         if (this.useRouter) {
+            let offset: number = event.page * this.rows;
+            if (this.firstPageRows && offset) {
+                offset = offset - this.rows + this.firstPageRows;
+            }
+
             this.router.navigate([], {
-                queryParams: {
-                    offset: event.page * this.rows,
-                },
+                queryParams: { offset },
                 queryParamsHandling: 'merge',
             });
         }

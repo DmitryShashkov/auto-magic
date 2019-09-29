@@ -9,6 +9,7 @@ import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url
 import { DEFAULT_LIMIT } from '../../../../../app.constants';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { PageChangeEvent } from 'src/app/components/shared/paginator/types/page-change.event';
 
 @Component({
     selector: 'am-battles-list',
@@ -20,6 +21,8 @@ import { delay } from 'rxjs/operators';
 export class BattlesListComponent {
     public battlesTable: Table<BattleModel>;
     public limit: number = 4;
+
+    public currentPage: BehaviorSubject<number> = new BehaviorSubject(0);
 
     @ViewChildren('entry')
     private entries: QueryList<ElementRef>;
@@ -36,6 +39,10 @@ export class BattlesListComponent {
             ),
             service: this.battlesService,
         });
+    }
+
+    public onPageChanged (event: PageChangeEvent): void {
+        this.currentPage.next(event.page);
     }
 
     // public ngAfterViewInit (): void {
