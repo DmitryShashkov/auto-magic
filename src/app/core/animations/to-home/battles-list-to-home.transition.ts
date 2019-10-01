@@ -4,7 +4,7 @@ import { FIXED_POSITION_QUERY } from '../fixed-position.query';
 import { HACK_QUERY } from '../hack.query';
 
 export const BATTLES_LIST_TO_HOME_TRANSITION: AnimationTransitionMetadata = transition(
-    `${AnimationsContract.Battles.LIST} => ${AnimationsContract.Home.ROOT}`,
+    AnimationsContract.Transitions.BATTLES_LIST_TO_HOME,
     [
         FIXED_POSITION_QUERY,
 

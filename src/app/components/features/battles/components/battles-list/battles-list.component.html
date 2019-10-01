@@ -10,6 +10,23 @@
     <div class="list d-flex ai-center jc-center fw-wrap">
         <div class="list__entry battle" #entry
             *ngIf="(currentPage | async) === 0">
+            <div class="battle__title-image"
+                progressiveImage
+                [width]="400"
+                [height]="300"
+                [source]="'/assets/images/new-game.png'">
+            </div>
+
+            <div class="battle__caption">
+                <div class="battle__panel battle__header">
+                    25.09.2019 -
+                    <span class="emphasized">New game</span>
+                </div>
+
+                <div class="battle__panel battle__action">
+                    Start
+                </div>
+            </div>
         </div>
         <ng-container *ngFor="let battle of battlesTable.data | async; let i = index">
             <div class="list__entry battle" #entry
