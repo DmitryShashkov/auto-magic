@@ -33,7 +33,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --base-href=/auto-magic/"
+    "deploy": "ng deploy --repo=https://github.com/auto-magic/auto-magic.github.io.git --branch=master --name=DmitryShashkov --email=dmitry.the.wise@gmail.com"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.802.1",
