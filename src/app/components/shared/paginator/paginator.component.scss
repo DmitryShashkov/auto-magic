@@ -1,0 +1,26 @@
+@import "../../../../assets/styles/colors";
+
+.paginator {
+    p-paginator ::ng-deep {
+        .ui-paginator {
+            background-color: transparent;
+            border: 0;
+
+            &-element {
+                color: $color-white;
+                font-size: 18px;
+                outline: none;
+            }
+
+            &-page {
+                font-family: Beleren;
+            }
+
+            .ui-state-active {
+                color: $color-mine-shaft-approx;
+                background-color: $color-white;
+                box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}

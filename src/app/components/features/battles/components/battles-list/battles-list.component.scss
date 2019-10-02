@@ -6,9 +6,13 @@ $duration-hover: 0.35s;
 $shadow-inner: 0 1px 10px rgba(0, 0, 0, 0.5);
 $shadow-outer: 0 3px 30px rgba(0, 0, 0, 0.8);
 
+.battles-list {
+    height: 100vh;
+}
+
 .list {
     width: 860px;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     height: 660px;
 
     &__entry {

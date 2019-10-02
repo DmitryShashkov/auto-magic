@@ -1,12 +1,4 @@
-
-<am-paginator
-    [rows]="limit"
-    [firstPageRows]="limit - 1"
-    [totalRecords]="battlesTable.total | async"
-    (pageChanged)="onPageChanged($event)">
-</am-paginator>
-
-<div class="battles-list">
+<div class="battles-list d-flex ai-center jc-center fd-column">
     <div class="list d-flex ai-center jc-center fw-wrap">
         <div class="list__entry battle" #entry
             *ngIf="(currentPage | async) === 0">
@@ -51,5 +43,14 @@
                 </div>
             </div>
         </ng-container>
+    </div>
+
+    <div class="battles-list__pagination">
+        <am-paginator
+            [rows]="limit"
+            [firstPageRows]="limit - 1"
+            [totalRecords]="battlesTable.total | async"
+            (pageChanged)="onPageChanged($event)">
+        </am-paginator>
     </div>
 </div>
