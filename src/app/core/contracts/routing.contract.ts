@@ -8,5 +8,8 @@ export namespace RoutingContract {
     export namespace Battles {
         export const ROOT = 'battles';
         export const LIST = 'list';
+
+        export const BATTLE_ID = 'battleId';
+        export const PARAM_BATTLE_ID = ':battleId';
     }
 }

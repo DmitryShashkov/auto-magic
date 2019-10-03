@@ -4,12 +4,14 @@ import { AnimationsContract } from 'src/app/core/contracts/animations.contract';
 import { BattlesService } from '../../battles.service';
 import { Table } from 'src/app/core/utils/table/table';
 import { BattleModel } from 'src/app/models/battle.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url.filter-provider';
 import { DEFAULT_LIMIT } from '../../../../../app.constants';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { PageChangeEvent } from 'src/app/components/shared/paginator/types/page-change.event';
+import { RoutingContract } from 'src/app/core/contracts/routing.contract';
+import { BattleEntryRouterState } from '../../types/battle-entry.router-state';
 
 @Component({
     selector: 'am-battles-list',
@@ -31,6 +33,7 @@ export class BattlesListComponent {
         private readonly battlesService: BattlesService,
         private readonly activatedRoute: ActivatedRoute,
         private readonly renderer: Renderer2,
+        private readonly router: Router,
     ) {
         this.battlesTable = new Table({
             filter: UrlFilterProvider.forRoute(
@@ -43,6 +46,20 @@ export class BattlesListComponent {
 
     public onPageChanged (event: PageChangeEvent): void {
         this.currentPage.next(event.page);
+    }
+
+    public startNewGame (): void {
+        this.battlesService.create().subscribe((battle) => {
+            const state: BattleEntryRouterState = { battle };
+            this.router.navigate(
+                [
+                    `/${RoutingContract.Battles.ROOT}`,
+                    RoutingContract.Battles.LIST,
+                    battle.id,
+                ],
+                { state },
+            );
+        });
     }
 
     // public ngAfterViewInit (): void {

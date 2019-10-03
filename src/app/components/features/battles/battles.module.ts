@@ -7,6 +7,7 @@ import { BattlesComponent } from './battles.component';
 import { BattlesService } from './battles.service';
 import { PaginatorModule } from '../../shared/paginator/paginator.module';
 import { DirectivesModule } from 'src/app/directives/directives.modules';
+import { BattlesEntryComponent } from './components/battles-entry/battles-entry.component';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { DirectivesModule } from 'src/app/directives/directives.modules';
     ],
     declarations: [
         BattlesListComponent,
+        BattlesEntryComponent,
         BattlesComponent,
     ],
     providers: [

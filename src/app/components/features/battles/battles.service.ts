@@ -33,4 +33,20 @@ export class BattlesService
                 })),
             );
     }
+
+    public findOne (id: number): Observable<BattleModel> {
+        return this.httpClient
+            .get<any>(`${this.apiEndpoint}/${id}`)
+            .pipe(
+                map((data) => plainToClass(BattleModel, data)),
+            );
+    }
+
+    public create (): Observable<BattleModel> {
+        return this.httpClient
+            .post<any>(this.apiEndpoint, null)
+            .pipe(
+                map((data) => plainToClass(BattleModel, data)),
+            );
+    }
 }
