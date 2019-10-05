@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'am-battles-entry',
@@ -6,4 +7,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     styleUrls: ['./battles-entry.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BattlesEntryComponent {}
+export class BattlesEntryComponent {
+    constructor (
+        private readonly activatedRoute: ActivatedRoute,
+    ) {
+        this.activatedRoute.data.subscribe(console.log);
+    }
+}

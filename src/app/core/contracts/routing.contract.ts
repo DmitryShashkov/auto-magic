@@ -11,5 +11,7 @@ export namespace RoutingContract {
 
         export const BATTLE_ID = 'battleId';
         export const PARAM_BATTLE_ID = ':battleId';
+
+        export const RESOLVE_BATTLE_ENTRY = 'battleEntry';
     }
 }

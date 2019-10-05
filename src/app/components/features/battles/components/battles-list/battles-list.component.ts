@@ -21,6 +21,8 @@ import { BattleEntryRouterState } from '../../types/battle-entry.router-state';
 })
 @AnimationState(AnimationsContract.Battles.LIST)
 export class BattlesListComponent {
+    public readonly RoutingContract: typeof RoutingContract = RoutingContract;
+
     public battlesTable: Table<BattleModel>;
     public limit: number = 4;
 
@@ -54,7 +56,6 @@ export class BattlesListComponent {
             this.router.navigate(
                 [
                     `/${RoutingContract.Battles.ROOT}`,
-                    RoutingContract.Battles.LIST,
                     battle.id,
                 ],
                 { state },

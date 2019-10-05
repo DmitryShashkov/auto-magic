@@ -8,6 +8,7 @@ import { BattlesService } from './battles.service';
 import { PaginatorModule } from '../../shared/paginator/paginator.module';
 import { DirectivesModule } from 'src/app/directives/directives.modules';
 import { BattlesEntryComponent } from './components/battles-entry/battles-entry.component';
+import { BattlesEntryResolver } from './resolvers/battles-entry.resolver';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { BattlesEntryComponent } from './components/battles-entry/battles-entry.
     ],
     providers: [
         BattlesService,
+        BattlesEntryResolver,
     ],
 })
 export class BattlesModule {}

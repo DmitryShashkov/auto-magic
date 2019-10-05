@@ -1,7 +1,8 @@
 <div class="battles-list d-flex ai-center jc-center fd-column">
     <div class="list d-flex ai-center jc-center fw-wrap">
         <div class="list__entry battle" #entry
-            *ngIf="(currentPage | async) === 0">
+            *ngIf="(currentPage | async) === 0"
+            (click)="startNewGame()">
             <div class="battle__title-image"
                 progressiveImage
                 [width]="400"
@@ -22,7 +23,8 @@
         </div>
         <ng-container *ngFor="let battle of battlesTable.data | async; let i = index">
             <div class="list__entry battle" #entry
-                *ngIf="(currentPage | async) !== 0 || i !== limit - 1">
+                *ngIf="(currentPage | async) !== 0 || i !== limit - 1"
+                [routerLink]="['/' + RoutingContract.Battles.ROOT, battle.id]">
                 <div class="battle__title-image"
                     progressiveImage
                     [width]="400"

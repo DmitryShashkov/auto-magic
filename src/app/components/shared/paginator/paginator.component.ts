@@ -1,6 +1,9 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnInit, AfterViewInit, ViewChild, OnChanges } from '@angular/core';
 import { PageChangeEvent } from './types/page-change.event';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { take, delay } from 'rxjs/operators';
+import { Paginator } from 'primeng/paginator';
+import { animationFrame } from 'rxjs/internal/scheduler/animationFrame';
 
 @Component({
     selector: 'am-paginator',
@@ -8,7 +11,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./paginator.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaginatorComponent {
+export class PaginatorComponent implements OnChanges {
     @Input() public rows: number;
     @Input() private totalRecords: number;
     @Input() private useRouter: boolean = true;
@@ -16,6 +19,9 @@ export class PaginatorComponent {
     @Input() private firstPageRows: number;
 
     @Output() public pageChanged: EventEmitter<PageChangeEvent> = new EventEmitter();
+
+    @ViewChild('paginator', { static: true })
+    private paginator: Paginator;
 
     public get calculatedTotalRecords (): number {
         if (!this.totalRecords) { return 0; }
@@ -26,7 +32,27 @@ export class PaginatorComponent {
 
     constructor (
         private readonly router: Router,
+        private readonly activatedRoute: ActivatedRoute,
     ) { }
+
+    public ngOnChanges (): void {
+        if (this.useRouter) {
+            this.activatedRoute.queryParams
+                .pipe(
+                    take(1),
+                    delay(0, animationFrame),
+                )
+                .subscribe((queryParams) => {
+                    let offset: number = Number(queryParams.offset) || 0;
+                    if (this.firstPageRows && offset) {
+                        offset = offset + this.rows - this.firstPageRows;
+                    }
+
+                    const pageNumber: number = Math.floor(offset / this.rows);
+                    this.paginator.changePage(pageNumber);
+                });
+        }
+    }
 
     public onPageChange (event: PageChangeEvent): void {
         this.pageChanged.emit(event);
