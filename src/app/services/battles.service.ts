@@ -9,7 +9,7 @@ import { ListResponse } from 'src/app/core/types/list-response';
 import { map } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BattlesService
     extends ServiceBase
     implements TableService<BattleModel> {

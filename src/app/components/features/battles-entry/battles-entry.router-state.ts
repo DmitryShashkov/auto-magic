@@ -1,5 +1,5 @@
 import { BattleModel } from 'src/app/models/battle.model';
 
-export interface BattleEntryRouterState {
+export interface BattlesEntryRouterState {
     readonly battle: BattleModel;
 }

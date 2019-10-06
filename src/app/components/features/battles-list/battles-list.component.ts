@@ -1,17 +1,15 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy, ChangeDetectorRef, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { AnimationState } from 'src/app/core/decorators/animation-state.decorator';
 import { AnimationsContract } from 'src/app/core/contracts/animations.contract';
-import { BattlesService } from '../../battles.service';
+import { BattlesService } from '../../../services/battles.service';
 import { Table } from 'src/app/core/utils/table/table';
 import { BattleModel } from 'src/app/models/battle.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UrlFilterProvider } from 'src/app/core/utils/table/filter-providers/url.filter-provider';
-import { DEFAULT_LIMIT } from '../../../../../app.constants';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { PageChangeEvent } from 'src/app/components/shared/paginator/types/page-change.event';
 import { RoutingContract } from 'src/app/core/contracts/routing.contract';
-import { BattleEntryRouterState } from '../../types/battle-entry.router-state';
+import { BattlesEntryRouterState } from '../battles-entry/battles-entry.router-state';
 
 @Component({
     selector: 'am-battles-list',
@@ -52,7 +50,7 @@ export class BattlesListComponent {
 
     public startNewGame (): void {
         this.battlesService.create().subscribe((battle) => {
-            const state: BattleEntryRouterState = { battle };
+            const state: BattlesEntryRouterState = { battle };
             this.router.navigate(
                 [
                     `/${RoutingContract.Battles.ROOT}`,
