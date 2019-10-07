@@ -1,3 +1,36 @@
+@import "../../../../assets/styles/colors";
+
 .battle {
     height: 100vh;
+
+    .cards-list {
+        padding: 0 50px;
+
+        .card {
+            border: 1px solid $color-black;
+            margin: 5px;
+            position: relative;
+
+            .color {
+                width: 10px;
+                height: 50px;
+                position: absolute;
+                top: -5px;
+                border: 1px solid $color-black;
+
+                @for $i from 0 through 5 {
+                    &-#{$i} {
+                        left: #{5 + 15 * $i}px;
+                    }
+                }
+            }
+        }
+    }
+
+    .vs {
+        font-family: Beleren;
+        font-size: 72px;
+        color: $color-white;
+        text-shadow: $color-black 3px 3px 3px;
+    }
 }

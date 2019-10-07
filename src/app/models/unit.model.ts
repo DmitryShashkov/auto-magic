@@ -1,4 +1,5 @@
 import { Expose } from 'class-transformer';
+import { Colors } from '../core/enums/colors.enum';
 
 export class UnitModel {
     @Expose() public id: string;
@@ -16,4 +17,26 @@ export class UnitModel {
 
     @Expose() public colorsList: string[];
     @Expose() public typesList: string[];
+
+    public get manaColorsList (): string[] {
+        return this.colorsList.map((color) => {
+            switch (color) {
+                case Colors.WHITE: {
+                    return 'mana-white';
+                }
+                case Colors.BLUE: {
+                    return 'mana-blue';
+                }
+                case Colors.BLACK: {
+                    return 'mana-black';
+                }
+                case Colors.RED: {
+                    return 'mana-red';
+                }
+                case Colors.GREEN: {
+                    return 'mana-green';
+                }
+            }
+        });
+    }
 }

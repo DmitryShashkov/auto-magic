@@ -1,6 +1,7 @@
 import { Expose, Type } from 'class-transformer';
 import { RarityModel } from './rarity.model';
 import { ArtistModel } from './artist.model';
+import { Colors } from '../core/enums/colors.enum';
 
 export class CardModel {
     @Expose() public id: number;
@@ -39,19 +40,19 @@ export class CardModel {
         return !this.colors.length;
     }
     public get isWhite (): boolean {
-        return this.colors.includes('W');
+        return this.colors.includes(Colors.WHITE);
     }
     public get isBlue (): boolean {
-        return this.colors.includes('U');
+        return this.colors.includes(Colors.BLUE);
     }
     public get isBlack (): boolean {
-        return this.colors.includes('B');
+        return this.colors.includes(Colors.BLACK);
     }
     public get isRed (): boolean {
-        return this.colors.includes('R');
+        return this.colors.includes(Colors.RED);
     }
     public get isGreen (): boolean {
-        return this.colors.includes('G');
+        return this.colors.includes(Colors.GREEN);
     }
     public get isMultiColored (): boolean {
         return this.colors.length > 2;
