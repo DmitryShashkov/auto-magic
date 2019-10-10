@@ -1,20 +1,25 @@
 <div class="battle d-flex ai-center jc-center">
-    <div class="cards-list enemies d-flex ai-center jc-center fw-wrap">
-        <div class="card enemy-card" *ngFor="let enemy of (battle | async)?.nextEnemyUnits">
+    <div class="cards-list enemies d-flex ai-center jc-center fw-wrap"
+        (mouseleave)="hoveredEnemy.next(null)">
+        <div class="card enemy-card" *ngFor="let enemy of (battle | async)?.nextEnemyUnits"
+            (mouseenter)="hoveredEnemy.next(enemy)">
             <div class="enemy-card__image"
                 progressiveImage
                 [width]="200"
                 [height]="150"
                 [source]="enemy.image">
             </div>
-
-            <div *ngFor="let color of enemy.manaColorsList; let i = index"
-                class="color color-{{i}} {{color}}">
-            </div>
         </div>
 
-        <!-- <div class=""></div> -->
-        <!-- todo: show name in panel on hover, show colors there -->
+        <div class="hovered-unit enemy d-flex ai-center jc-center"
+            [class.visible]="hoveredEnemy | async">
+            <div *ngFor="let color of (hoveredEnemy | async)?.manaColorsList; let i = index"
+                class="color {{color}}">
+            </div>
+            <div class="hovered-unit__name">
+                {{ (hoveredEnemy | async)?.name }}
+            </div>
+        </div>
     </div>
 
     <div class="vs">
@@ -29,6 +34,9 @@
                 [height]="150"
                 [source]="unit.image">
             </div>
+        </div>
+
+        <div class="hovered-unit available">
         </div>
     </div>
 </div>

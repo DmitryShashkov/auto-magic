@@ -1,28 +1,51 @@
 @import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/responsive";
 
 .battle {
     height: 100vh;
 
     .cards-list {
         padding: 0 50px;
+        cursor: pointer;
 
         .card {
             border: 1px solid $color-black;
             margin: 5px;
             position: relative;
+        }
+
+        .hovered-unit {
+            background-color: $color-white;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            color: $color-mine-shaft-approx;
+            width: 620px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 15px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: 0.3s opacity ease-in-out;
 
             .color {
-                width: 10px;
-                height: 50px;
-                position: absolute;
-                top: -5px;
-                border: 1px solid $color-black;
+                width: 5px;
+                height: 20px;
+                display: inline-block;
+                margin: 0 0 0 5px;
+                transform: skewX(-10deg);
+            }
 
-                @for $i from 0 through 5 {
-                    &-#{$i} {
-                        left: #{5 + 15 * $i}px;
-                    }
-                }
+            &__name {
+                margin-left: 15px;
+            }
+
+            &.visible {
+                opacity: 1;
+            }
+
+            @include respond-to(extra-large) {
+                width: 410px;
             }
         }
     }
