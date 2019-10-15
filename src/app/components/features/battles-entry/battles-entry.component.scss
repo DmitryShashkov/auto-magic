@@ -4,56 +4,45 @@
 .battle {
     height: 100vh;
 
-    .cards-list {
-        padding: 0 50px;
-        cursor: pointer;
+    .units-list {
+        .unit {
+            display: flex;
+            align-items: center;
 
-        .card {
-            border: 1px solid $color-black;
-            margin: 5px;
-            position: relative;
-        }
-
-        .hovered-unit {
-            background-color: $color-white;
-            font-size: 18px;
-            line-height: 22px;
-            text-align: center;
-            color: $color-mine-shaft-approx;
-            width: 620px;
-            height: 30px;
-            line-height: 30px;
-            margin-top: 15px;
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: 0.3s opacity ease-in-out;
-
-            .color {
-                width: 5px;
-                height: 20px;
-                display: inline-block;
-                margin: 0 0 0 5px;
+            &__image {
+                width: 80px;
+                height: 60px;
+                border: 2px solid #000;
                 transform: skewX(-10deg);
+                background-color: darkgray;
+                margin-bottom: 10px;
+            }
+
+            &__texts {
+                display: flex;
+                align-items: center;
             }
 
             &__name {
-                margin-left: 15px;
+                background-color: #a9b7c6;
+                padding: 10px 25px;
+                color: #000;
+                transform: skewX(-10deg);
+                font-family: Beleren;
+                border-top: 2px solid;
+                border-bottom: 2px solid;
+                font-size: 16px;
             }
 
-            &.visible {
-                opacity: 1;
-            }
-
-            @include respond-to(extra-large) {
-                width: 410px;
+            &__level {
+                background-color: #a9b7c6;
+                padding: 10px 25px;
+                color: #000;
+                transform: skewX(-10deg);
+                font-family: Beleren;
+                border: 2px solid;
+                font-size: 32px;
             }
         }
-    }
-
-    .vs {
-        font-family: Beleren;
-        font-size: 72px;
-        color: $color-white;
-        text-shadow: $color-black 3px 3px 3px;
     }
 }

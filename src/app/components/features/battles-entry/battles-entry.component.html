@@ -1,42 +1,27 @@
 <div class="battle d-flex ai-center jc-center">
-    <div class="cards-list enemies d-flex ai-center jc-center fw-wrap"
-        (mouseleave)="hoveredEnemy.next(null)">
-        <div class="card enemy-card" *ngFor="let enemy of (battle | async)?.nextEnemyUnits"
-            (mouseenter)="hoveredEnemy.next(enemy)">
-            <div class="enemy-card__image"
-                progressiveImage
-                [width]="200"
-                [height]="150"
-                [source]="enemy.image">
-            </div>
-        </div>
-
-        <div class="hovered-unit enemy d-flex ai-center jc-center"
-            [class.visible]="hoveredEnemy | async">
-            <div *ngFor="let color of (hoveredEnemy | async)?.manaColorsList; let i = index"
-                class="color {{color}}">
-            </div>
-            <div class="hovered-unit__name">
-                {{ (hoveredEnemy | async)?.name }}
+    <div class="units-list units-list--enemy">
+        <div class="units-list__entry unit" 
+            *ngFor="let unit of (battle | async)?.nextEnemyUnits">
+            <div class="unit__image"></div>
+            <div class="unit__info">
+                <div class="unit__texts">
+                    <div class="unit__name">
+                        {{ unit.name }}
+                    </div>
+                    <div class="unit__level">
+                        {{ unit.level }}
+                    </div>
+                </div>
+                <div class="unit__colors">
+                    <span *ngFor="let color of unit.manaColorsList"
+                        class="color {{color}}">
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="vs">
-        VS.
-    </div>
+    <div class="drop-zone"></div>
 
-    <div class="cards-list availables d-flex ai-center jc-center fw-wrap">
-        <div class="card available-card" *ngFor="let unit of (battle | async)?.availableUnits">
-            <div class="available-card__image"
-                progressiveImage
-                [width]="200"
-                [height]="150"
-                [source]="unit.image">
-            </div>
-        </div>
-
-        <div class="hovered-unit available">
-        </div>
-    </div>
+    <div class="units-list units-list--available"></div>
 </div>

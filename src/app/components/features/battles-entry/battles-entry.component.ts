@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import { BattleModel } from 'src/app/models/battle.model';
 import { pluck } from 'rxjs/operators';
 import { RoutingContract } from 'src/app/core/contracts/routing.contract';
-import { UnitModel } from 'src/app/models/unit.model';
 
 @Component({
     selector: 'am-battles-entry',
@@ -17,8 +16,6 @@ import { UnitModel } from 'src/app/models/unit.model';
 @AnimationState(AnimationsContract.Battles.ENTRY)
 export class BattlesEntryComponent {
     public readonly battle: BehaviorSubject<BattleModel> = new BehaviorSubject(null);
-
-    public readonly hoveredEnemy: BehaviorSubject<UnitModel> = new BehaviorSubject(null);
 
     constructor (
         private readonly activatedRoute: ActivatedRoute,
