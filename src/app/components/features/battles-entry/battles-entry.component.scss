@@ -8,6 +8,7 @@
         .unit {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
 
             &__image {
                 width: 80px;
@@ -15,12 +16,17 @@
                 border: 2px solid #000;
                 transform: skewX(-10deg);
                 background-color: darkgray;
-                margin-bottom: 10px;
+                border-radius: 7px;
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
             }
 
             &__texts {
                 display: flex;
                 align-items: center;
+                position: relative;
+                z-index: 1;
             }
 
             &__name {
@@ -42,6 +48,22 @@
                 font-family: Beleren;
                 border: 2px solid;
                 font-size: 32px;
+                border-radius: 7px;
+            }
+
+            &__colors {
+                display: flex;
+                position: relative;
+                top: -9px;
+                left: -5px;
+                transform: skewX(-15deg);
+                z-index: 0;
+
+                .color {
+                    width: 20px;
+                    height: 7px;
+                    display: block;
+                }
             }
         }
     }

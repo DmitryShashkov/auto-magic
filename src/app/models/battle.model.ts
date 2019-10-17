@@ -13,7 +13,8 @@ export class BattleModel {
 
     @Expose() public currentGold: number;
 
-    @Expose() public availableUnits: any[];
+    @Type(() => UnitModel)
+    @Expose() public availableUnits: UnitModel[];
 
     @Expose() public selectedUnits: any[];
 

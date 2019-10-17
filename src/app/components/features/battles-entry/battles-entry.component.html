@@ -2,7 +2,12 @@
     <div class="units-list units-list--enemy">
         <div class="units-list__entry unit" 
             *ngFor="let unit of (battle | async)?.nextEnemyUnits">
-            <div class="unit__image"></div>
+            <div class="unit__image"
+                progressiveImage
+                [width]="80"
+                [height]="60"
+                [source]="unit.image">
+            </div>
             <div class="unit__info">
                 <div class="unit__texts">
                     <div class="unit__name">
@@ -23,5 +28,31 @@
 
     <div class="drop-zone"></div>
 
-    <div class="units-list units-list--available"></div>
+    <!-- todo: make a distinct component -->
+    <div class="units-list units-list--available">
+        <div class="units-list__entry unit" 
+            *ngFor="let unit of (battle | async)?.availableUnits">
+            <div class="unit__image"
+                progressiveImage
+                [width]="80"
+                [height]="60"
+                [source]="unit.image">
+            </div>
+            <div class="unit__info">
+                <div class="unit__texts">
+                    <div class="unit__name">
+                        {{ unit.name }}
+                    </div>
+                    <div class="unit__level">
+                        {{ unit.level }}
+                    </div>
+                </div>
+                <div class="unit__colors">
+                    <span *ngFor="let color of unit.manaColorsList"
+                        class="color {{color}}">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
