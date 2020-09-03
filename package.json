@@ -18,7 +18,7 @@
     "core-js": "2.6.9",
     "jasmine-core": "2.99.1",
     "jasmine-marbles": "0.6.0",
-    "lazysizes": "^5.1.1",
+    "lazysizes": "^5.2.1",
     "primeicons": "^2.0.0",
     "primeng": "^8.0.3",
     "rxjs": "6.5.2",
